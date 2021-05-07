@@ -77,6 +77,7 @@ enum custom_keycodes {
   I3_MOVE,
   I3_BARS,
   I3_SPAD,
+  I3_FLOAT,
   I3_WINTAB,
   I3_KILL,
   I3_XKILL,
@@ -165,8 +166,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_LGUI,  M_LOCK,  KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, KC_AUDIO_MUTE,  I3_KILL,                    I3_XKILL,         KC_MPLY,       KC_MPRV,          KC_MNXT, M_PWMENU, KC_RALT,\
   //|--------+--------+-------------------+----------------+--------------+---------|                    |-------+----------------+--------------+-----------------+--------+---------|
       KC_LCTL,   M_WS5,              M_WS6,           M_WS7,         M_WS8,    I3_FS,                    I3_FOCUS,           M_WS1,         M_WS2,             M_WS3,   M_WS4,   KC_NO,\
-  //|--------+--------+-------------------+----------------+--------------+---------|                    |-------+----------------+--------------+------------------+-----KC_MEDIA_PLAY_PAUSE---+---------|
-      KC_LSFT, I3_GAPS,          I3_RESIZE,         I3_MOVE,       I3_SPAD,  I3_LYM,                     I3_BARS,       I3_WINTAB,       XXXXXXX,           XXXXXXX, I3_RESET, CKC_RLOCK,\
+  //|--------+--------+-------------------+----------------+--------------+---------|                    |-------+----------------+--------------+--------------------------+---------|
+      KC_LSFT, I3_GAPS,          I3_RESIZE,         I3_MOVE,       I3_SPAD,  I3_LYM,                     I3_BARS,          I3_FLOAT,     I3_WINTAB,           XXXXXXX, I3_RESET, CKC_RLOCK,\
   //|--------+--------+-------------------+----------------+--------------+-----------------|  |---------+-------+----------------+--------------+------------------+--------+---------|
                                                                      SUPER,    LOWER, ADJUST,  KC_NO, RAISE, KC_DEL \
                                                                     //`---------------------'  `------------------------'
@@ -449,6 +450,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         trigger_shortcut(KC_R,1,0,1,0,0);
       }
      return false;
+    case I3_FLOAT:
+      if (record->event.pressed) {trigger_shortcut(KC_SPACE,1,0,1,0,0);}
+
     //  LOWER LAYER MACROS 
     // -----------------------------------------------------------------------
     case CKC_ACCENT: // ´ and `

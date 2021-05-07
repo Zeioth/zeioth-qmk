@@ -77,7 +77,7 @@ in I3/VIM particulary. It can be extended with extra layers and modes.
 //         |   |   |   |                   |   |   |  |
    WIN     lok vd vu   m    kl        xkl  p   <   >  pwd   AGR      
    CTL     4   3   2   1    FS        FW   5   6   7  8           
-   SHIF    gap res move scp lym       bar wtab    ri3       RLOCK
+   SHIF    gap res move scp lym       bar flo wtab    ri3   RLOCK
    
                   SUP LOW          BSP RAI DEL
 //                     |                |
@@ -90,7 +90,7 @@ in I3/VIM particulary. It can be extended with extra layers and modes.
 //         |   |   |   |                |   |   |   |
    WIN     |   |   |   |                |   |   |   |     AGR      
    CTL    mv5 mv6 mv7 mv8              mv1 mv2 mv3 mv4           
-   SHIF    |   |   |   |                |   |   |   |     RLOCK
+   SHIF    |   |   |  mscp              |   |   |   |     RLOCK
 
                   SUP LOW           BSP RAI DEL
 //                     |                |
