@@ -55,7 +55,6 @@ enum custom_keycodes {
   // BASE LAYER KEYS
   CKC_CTRLBS,
   CKC_BSPC,
-  CKC_TAB,
   CKC_RLOCK,
   // SUPER LAYER KEYCODES
   M_WS1,
@@ -150,7 +149,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // #############################################################  BASE ########################################################################
   [_BASE] = LAYOUT_split_3x6_3( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------------------.
-      CKC_TAB,    KC_Q,    KC_D,    KC_R,    KC_W,    KC_B,                         KC_J,    KC_F,    KC_U,    KC_P, KC_SCLN,           CKC_BSPC,\
+      KC_TAB,    KC_Q,    KC_D,    KC_R,    KC_W,    KC_B,                         KC_J,    KC_F,    KC_U,    KC_P, KC_SCLN,           CKC_BSPC,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+-----------------+-----------|
       KC_LCTL,    KC_A,    KC_S,    KC_H,    KC_T,    KC_G,                         KC_Y,    KC_N,    KC_E,    KC_O, KC_I,            CKC_ACCENT,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+-----------------+-----------|
@@ -364,10 +363,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
     case CKC_BSPC: // BACKSPACE AND DEL 
       if (record->event.pressed) {press_virtual_key(KC_BSPC, KC_DEL, 0, 0, 0, 0);}
-      else {clear_keyboard_but_mods();}
-      return false;
-    case CKC_TAB: // TAB
-      if (record->event.pressed) {press_virtual_key(KC_TAB, KC_TAB, 0, 0, 0, 0);}
       else {clear_keyboard_but_mods();}
       return false;
     case CKC_RLOCK: // RAISE LOCK and ARROW MODE

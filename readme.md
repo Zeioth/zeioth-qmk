@@ -1,5 +1,12 @@
 Backup of my keyboard drivers. Feel free to get ides for yours.
 
+# Instructions
+After you clone this repo, run this inside of it:
+
+    qmk setup
+
+QMK cumbersome from here.
+
 # Quantum Mechanical Keyboard Firmware
 
 [![Current Version](https://img.shields.io/github/tag/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/tags)

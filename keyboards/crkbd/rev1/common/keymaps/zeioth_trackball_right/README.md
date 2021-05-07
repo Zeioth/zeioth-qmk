@@ -154,7 +154,7 @@ in I3/VIM particulary. It can be extended with extra layers and modes.
 -----------------------------------------------------------------------------
 ### SPECIAL LAYERS 
 -----------------------------------------------------------------------------
-### ARROW LAYER [RSHIFT+ALTGR]
+### ARROW LAYER [SHIF+RLOCK]
 ```c
 // [ARROWS]
 //         |   |   |   |                   |   |   |   |
