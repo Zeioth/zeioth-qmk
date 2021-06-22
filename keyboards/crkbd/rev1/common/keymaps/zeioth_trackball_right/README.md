@@ -75,9 +75,9 @@ in I3/VIM particulary. It can be extended with extra layers and modes.
 // [WORKSPACES, MEDIA CONTROLS, KILL]
 // [LAYOUT, SCRATCHPAD]
 //         |   |   |   |                   |   |   |  |
-   WIN     lok vd vu   m    kl        xkl  p   <   >  pwd   AGR      
-   CTL     4   3   2   1    FS        FW   5   6   7  8           
-   SHIF    gap res move scp lym       bar flo wtab    ri3   RLOCK
+   WIN     lok vd vu   m    kl       xkl   p   <   >  pwd   AGR      
+   CTL     4   3   2   1    FS       wtab  5   6   7  8           
+   SHIF    gap res move scp lym      bar wtab flo FW   ri3   RLOCK
    
                   SUP LOW          BSP RAI DEL
 //                     |                |
