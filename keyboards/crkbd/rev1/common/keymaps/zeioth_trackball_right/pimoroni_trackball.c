@@ -268,7 +268,7 @@ __attribute__((weak)) void pointing_device_send(void) {
         if (!scrolling) {
             process_mouse_user(&mouseReport, x, y, 0, 0);
         } else {
-            process_mouse_user(&mouseReport, 0, 0, h, v*0.50);
+            process_mouse_user(&mouseReport, 0, 0, h*0.50, v*0.50);
         }
 
         if (has_report_changed(mouseReport, old_report)) {

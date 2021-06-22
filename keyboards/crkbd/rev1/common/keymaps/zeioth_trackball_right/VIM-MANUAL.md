@@ -229,7 +229,7 @@ STRATEGIES
 
 # GENERAL STRATEGY
 
-The most eficiente cross scenario way to move in vim would be
+The most eficient cross scenario way to move in vim would be
 
 ```text
 MOTION          MEANING
@@ -240,6 +240,16 @@ v/os)c          select until 'os)' and change
 
 Just remember you can search during a visual selection.
 
+```text
+CUSTOM BIN  D   MEANING
+,ha             0%
+,hs             25%
+,hh             50%
+,ht             append at the end of the current word.
+,hg             75%
+```
+
+Also, this custom keybinds make quicker to move horizontally.
 
 # SEARCH AND REPLACE
 
@@ -296,6 +306,9 @@ Buffers are the files we open in vim. Use <leader>b and...
   \},
 
 ```
+
+Once on the buffer selection menu, you can choose buffers with <C-z> and delete
+them with F7.
 
 # CODING
 
