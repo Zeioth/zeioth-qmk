@@ -65,22 +65,27 @@ enum custom_keycodes {
   M_WS6,
   M_WS7,
   M_WS8,
+  F_WL,
+  F_WD,
+  F_WU,
+  F_WR,
   M_LOCK,
   M_PWMENU,
   I3_LYM,
   M_HELP,
   M_VIM_HELP,
-  I3_FOCUS,
   I3_FS,
-  I3_GAPS,
+  I3_DISPLAYS,
+  I3_SCREENSHOT,
   I3_RESIZE,
   I3_MOVE,
-  I3_BARS,
   I3_SPAD,
   I3_FLOAT,
   I3_WINTAB,
   I3_KILL,
   I3_XKILL,
+  I3_PW,
+  I3_NW,
   I3_RESET,
   // LOWER LAYER KEYCODES
   CKC_ACCENT,
@@ -163,11 +168,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ############################################################# SUPER ########################################################################
   [_SUPER] = LAYOUT_split_3x6_3( \
   //,-------------------------------------------------------------------------------.                    ,-----------------------------------------------------------------------------.
-      KC_LGUI,  M_LOCK,  KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, KC_AUDIO_MUTE,  I3_KILL,                    I3_XKILL,         KC_MPLY,       KC_MPRV,          KC_MNXT, M_PWMENU, KC_RALT,\
+      KC_LGUI,  M_LOCK,  KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, KC_AUDIO_MUTE,  I3_KILL,                    I3_XKILL,         KC_MPLY,       KC_MPRV,          KC_MNXT,  M_PWMENU, KC_RALT,\
   //|--------+--------+-------------------+----------------+--------------+---------|                    |-------+----------------+--------------+-----------------+--------+---------|
-      KC_LCTL,   M_WS5,              M_WS6,           M_WS7,         M_WS8,    I3_FS,                    I3_WINTAB,           M_WS1,         M_WS2,            M_WS3,   M_WS4,   KC_NO,\
+      KC_LCTL,   M_WS7,              M_WS1,           M_WS2,         M_WS3,    I3_FS,                   I3_WINTAB,           M_WS4,         M_WS5,           M_WS6,     M_WS8,   KC_NO,\
   //|--------+--------+-------------------+----------------+--------------+---------|                    |-------+----------------+--------------+--------------------------+---------|
-      KC_LSFT, I3_GAPS,          I3_RESIZE,         I3_MOVE,       I3_SPAD,  I3_LYM,                     I3_BARS,          I3_WINTAB,     I3_FLOAT,         I3_FOCUS, I3_RESET, CKC_RLOCK,\
+      KC_LSFT, I3_DISPLAYS,          I3_RESIZE,         I3_MOVE,       I3_SPAD,   I3_LYM,                    I3_FLOAT,           I3_PW,         I3_NW,     I3_SCREENSHOT, I3_RESET, CKC_RLOCK,\
   //|--------+--------+-------------------+----------------+--------------+-----------------|  |---------+-------+----------------+--------------+------------------+--------+---------|
                                                                      SUPER,    LOWER, ADJUST,  KC_NO, RAISE, KC_DEL \
                                                                     //`---------------------'  `------------------------'
@@ -202,9 +207,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ############################################################# HYPER ########################################################################
   [_HYPER] = LAYOUT_split_3x6_3( \
   //,--------------------------------------------------------------------------------.                    ,--------------------------------------------------------------.
-    M_WEATHER,        M_CBACKUP,   M_TOOLBOX,   M_ROFI_SHORTCUTS, M_ROFI_EMOJI, M_FILEX,                   M_RANGER, KC_MS_BTN1,    KC_MS_U, KC_MS_BTN2,   M_VIM, M_ROFI_MANUALS,\
+    M_WEATHER,        M_CBACKUP,   M_TOOLBOX,   M_ROFI_SHORTCUTS, M_ROFI_EMOJI, M_FILEX,                   M_RANGER, KC_MS_BTN2,    KC_MS_U, KC_MS_BTN3,   M_VIM, M_ROFI_MANUALS,\
   //|--------+---------------+------------+-------------------+-------------+--------|                    |--------+-----------+-----------+-----------+--------+--------|
-      KC_LCTL,         KC_F11, M_ROFI_DOCS,  M_ROFI_ACTIVITIES,      M_ROFI,    M_CALC,                   KC_MS_BTN3,    KC_MS_L,    KC_MS_D,    KC_MS_R,  KC_F12, KC_ACL1,\
+      KC_LCTL,         KC_F11, M_ROFI_DOCS,  M_ROFI_ACTIVITIES,      M_ROFI,    M_CALC,                   KC_MS_BTN1,    KC_MS_L,    KC_MS_D,    KC_MS_R,  KC_F12, KC_ACL1,\
   //|--------+---------------+------------+-------------------+-------------+--------|                    |--------+-----------+-----------+-----------+--------+--------|
     KC_LSHIFT,          KC_F4,       KC_F3,              KC_F2,        KC_F1,   KC_F5,                      KC_F10,       KC_F6,      KC_F7,      KC_F8,   KC_F9, CKC_RLOCK,\
   //|--------+---------------+------------+-------------------+-------------+--------+--------|  |--------+--------+-----------+-----------+-----------+--------+--------|
@@ -400,11 +405,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case M_WS8:
       if (record->event.pressed) {trigger_shortcut(KC_8,0,0,1,0,0);}
       return false;
+    case F_WL:
+      if (record->event.pressed) {trigger_shortcut(KC_LEFT,0,0,1,0,0);}
+      return false;
+    case F_WD:
+      if (record->event.pressed) {trigger_shortcut(KC_DOWN,0,0,1,0,0);}
+      return false;
+    case F_WU:
+      if (record->event.pressed) {trigger_shortcut(KC_UP,0,0,1,0,0);}
+      return false;
+    case F_WR:
+      if (record->event.pressed) {trigger_shortcut(KC_RIGHT,0,0,1,0,0);}
+      return false;
     case M_LOCK:
-     if (record->event.pressed) {trigger_shortcut(KC_9,1,0,1,0,0);}
+     if (record->event.pressed) {trigger_shortcut(KC_L,1,0,1,0,0);}
      return false;
     case M_PWMENU:
-      if (record->event.pressed) {trigger_shortcut(KC_0,1,0,1,0,0);}
+      if (record->event.pressed) {trigger_shortcut(KC_E,1,0,1,0,0);}
       return false;
     case I3_LYM:
      if (record->event.pressed) {trigger_shortcut(KC_F9,0,0,1,0,0);}
@@ -415,23 +432,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case M_VIM_HELP:
       if (record->event.pressed) {trigger_shortcut(KC_V,1,0,1,0,0);}
       return false;
-    case I3_FOCUS:
-      if (record->event.pressed) {trigger_shortcut(KC_Z,0,0,1,0,0);}
-      return false;
     case I3_FS:
       if (record->event.pressed) {trigger_shortcut(KC_F,0,0,1,0,0);}
       return false;
-    case I3_GAPS:
-      if (record->event.pressed) {trigger_shortcut(KC_G,1,0,1,0,0);}
+    case I3_DISPLAYS: 
+      if (record->event.pressed) {trigger_shortcut(KC_D,1,0,1,0,0);}
+      return false;
+    case I3_SCREENSHOT:
+      if (record->event.pressed) {trigger_shortcut(KC_S,1,0,1,0,0);}
       return false;
    case I3_RESIZE:
       if (record->event.pressed) {trigger_shortcut(KC_R,0,0,1,0,0);}
       return false;
    case I3_MOVE:
       if (record->event.pressed) {trigger_shortcut(KC_A,1,0,1,0,0);}
-      return false;
-    case I3_BARS:
-      if (record->event.pressed) {trigger_shortcut(KC_M,0,0,1,0,0);}
       return false;
     case I3_SPAD:
       if (record->event.pressed) {trigger_shortcut(ES_MINS,0,0,1,0,0);}
@@ -444,6 +458,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
     case I3_XKILL:
       if (record->event.pressed) {trigger_shortcut(KC_X,1,0,1,0,0);}
+    case I3_PW:
+      if (record->event.pressed) {trigger_shortcut(KC_PGUP,0,0,1,0,0);}
+      return false;
+    case I3_NW:
+      if (record->event.pressed) {trigger_shortcut(KC_PGDOWN,0,0,1,0,0);}
+      return false;
     case I3_RESET:
       if (record->event.pressed) {
         trigger_shortcut(KC_C,1,0,1,0,0);

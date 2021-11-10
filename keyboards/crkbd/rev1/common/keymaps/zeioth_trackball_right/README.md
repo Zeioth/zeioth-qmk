@@ -76,8 +76,8 @@ in I3/VIM particulary. It can be extended with extra layers and modes.
 // [LAYOUT, SCRATCHPAD]
 //         |   |   |   |                   |   |   |  |
    WIN     lok vd vu   m    kl       xkl   p   <   >  pwd   AGR      
-   CTL     4   3   2   1    FS       wtab  5   6   7  8           
-   SHIF    gap res move scp lym      bar wtab flo FW   ri3   RLOCK
+   CTL      7   1   2   3    FS       wtab 6   5   4  8          
+   SHIF    gap res move scp lym      flo   wp  wn FW   ri3   RLOCK
    
                   SUP LOW          BSP RAI DEL
 //                     |                |
@@ -217,7 +217,7 @@ macros there.
 ### HOW TO FLASH
 -----------------------------------------------------------------------------
 
-* Install avr-gcc 8.3 (newer versions will fail)
+* Install avr-gcc (8.3 and 11.x tested and working).
 * go to the root directory of qmk
 * run 
 

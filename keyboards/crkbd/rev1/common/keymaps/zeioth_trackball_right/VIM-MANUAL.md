@@ -93,11 +93,13 @@ d/potato: Delete until the word potato, non-inclusive.
 
 MOVE
 -------------------------------------
+
 Press shift to ignore separators like commas.
+
 ```text
-w:  prev sentence.
-b:  prev sentence.
-e:  last char of the next word..
+w:  last char of the next word.
+e:  next word.
+b:  prev word.
 ```
 
 
@@ -163,26 +165,80 @@ LEAD KEYS
 
 ```vim
 let g:lead_maps = {
-  \'name': "<Lead>",
-  \'<CR>': "Turn off    (highlights)",
-  \'b': "buffers     (fuzzy list)",
-  \'ba': "buffers all (delete)",
-  \'bd': "buffer (delete)",
+  \'name': "Lead keymap",
+  \'<CR>':    "Turn off        (highlights)",
+  \'q':       "quit            (window)",
+  \'e':       "edit            (vim settings)",
+  \'f':       "open            (project buffer)",
+  \'n':       "insert *        (list item)",
+  \'ñ':       "yankstack+      (paste older)",
+  \'Ñ':       "yankstack-      (paste newer)",
+  \'o':       "open            (recent buffer)",
+  \'p':       "paste           (after space)",
+  \'P':       "paste           (endline)",
+  \'r':       "ranger          (open)",
+  \'s':       "sessions        (fuzzy)",
+  \'w':       "write",
+  \'z':       "zen mode",
+  \'a': {
+    \'name': "[SEARCH/REPLACE]",
+    \'b': "search in buffer (code)",
+    \'s': "search in project (code)",
+    \'r': "replace (in file)",
+    \'R': "replace (in project)",
+    \'c': "confirm (replace in project)",
+    \'u': "undo  (replace in project)",
+  \},
   \'c': {
     \'name': "[COC]",
+    \'1': "which_key_ignore",
+    \'2': "which_key_ignore",
   \},
-  \'d': "diff   (toggle)",
-  \'e': "edit   (vim settings)",
-  \'f': "open   (any buffer)",
-  \'g': "open (prev buffer)",
-  \'o': "open (recent buffer)",
-  \'r': "ranger   (open)",
-  \'s': "sessions (fuzzy)",
+  \'g': {
+    \'name': "[GIT]",
+    \'b': "buffer commits  (show)",
+    \'d': "diff  (toggle)",
+    \'h': "gitHub (See file)",
+    \'x': "blame  (enable)",
+    \'m': "mergetool  (local/merged/remote)",
+  \},
+  \'b': {
+    \'name': "[BUFFER]",
+    \'b':     "buffers (fuzzy list)",
+    \'a':      "buffers all (delete)",
+    \'d':      "buffer delete (delete)",
+    \'g': {
+      \'name': "[GOTO]",
+      \'u':       "prev buffer",
+      \'p':       "next buffer",
+      \'a':       "buffer 4",
+      \'s':       "buffer 3",
+      \'h':       "buffer 2",
+      \'t':       "buffer 1",
+      \'g':       "buffer 5",
+      \'y':       "buffer 0",
+      \'n':       "buffer 6",
+      \'e':       "buffer 7",
+      \'o':       "buffer 8",
+      \'i':       "buffer 9",
+    \}
+  \},
+  \'h': {
+    \'name': "[FAST]",
+    \'a': "zero",
+    \'s': "25%",
+    \'h': "50%",
+    \'t': "Append (word)",
+    \'g': "75%",
+  \},
+  \'l': {
+    \'name': "[LINE]",
+      \'d':       "--- line",
+      \'h':       "### line",
+  \},
   \'t': {
     \'name': "[TABS]",
   \},
-  \'w': "write",
-  \'z': "zen mode",
 \}
 ```
 
@@ -192,15 +248,21 @@ CTRL SHORTCUTS
 ```vim
 let g:ctrl_maps = {
   \'name': "CTRL keymap",
-  \'<c-q>': "Show ctrl keybindings",
-  \'<c-i>': "retrace pos ->",
-  \'<c-0>': "retrace pos <-",
-  \'<c-r>': "redo",
-  \'<c-v>': "v-block",
-  \'<c-w>': "window",
-  \'<c-w>-h': "v-split",
-  \'<c-w>-v': "v-split",
-  \'<c-w><c-w>': "toggle window",
+  \'i': "retrace forward",
+  \'o': "retrace backwards",
+  \'n': "markdown (start grip)",
+  \'e': "markdown (stop grip)",
+  \'ñ': "yank stack",
+  \'j': "global yank",
+  \'p': "global paste",
+  \'r': "redo",
+  \'t': "toggle (window)",
+  \'v': "v-block", 
+  \'w': "window", 
+  \'w-=': "resize equally", 
+  \'w-r': "rotate", 
+  \'w-n': "h-split", 
+  \'w-v': "v-split", 
 \}
 ```
 
@@ -241,22 +303,29 @@ v/os)c          select until 'os)' and change
 Just remember you can search during a visual selection.
 
 ```text
-CUSTOM BIN  D   MEANING
-,ha             0%
-,hs             25%
-,hh             50%
-,ht             append at the end of the current word.
-,hg             75%
+CUSTOM BIND     MEANING
+,hh              0%
+,ht              50%
+,hg              75%
 ```
 
 Also, this custom keybinds make quicker to move horizontally.
+
+```text
+CUSTOM BIND     MEANING
+t               append at the end of the word under the cursor (viwa).
+```
+
+Also, this custom keybinds make insert faster.
+
 
 # SEARCH AND REPLACE
 
 99% of the time the time we'll only use
 
 * search <space>
-* search in project ,<space>
+* search in project ,as
+* replace in project ,ar
 
 Border cases are
 
@@ -264,9 +333,9 @@ Border cases are
 
 ```text
   KEY          ACTION                 CMD
-  ,space       search in project      Farf
   ,as          Search in project      Farf
   ,ar          replace in project     Farr (fardo to commmit all changes)
+  ,ac          Commit changes         Fardo
   ,au          Undo changes           Farundo
 
 FAR KEYBINDINGS:
@@ -275,7 +344,6 @@ FAR KEYBINDINGS:
   s       substitute in place (so you dont need to run fardo)
   u       undo
   q       quit
-
 ```
 
 # BUFFERS
@@ -316,7 +384,7 @@ Go to definition:
 
 ```text
 KEY       ACTION
-gt        Go to documentation
+gs        Go to docs
 gf        Go to file
 gd        Go to definition
 ctrl+o    go back
@@ -359,18 +427,43 @@ Surround code:
 KEY       ACTION
 jss"      Just surround sentence with "
 jss<div>  Just surround sentence with <div> (or any tag)
+cs"'      Change surround " by '
 ds        Delete existing surroundings
 
-V<div>    Surround current selection with <div> (or any tag)
+vS<div>    Surround current selection with <div> (or any tag)
 ```
 
 Markdown:
 
 ```text
+KEY       ACTION
 ,n        add unordered item  
 ,ld       insert a line of dashes 
 ,lh       insert a line of hashes
 ```
+
+Snippets:
+
+```text
+KEY       ACTION
+,cs       Fuzzy search for available snippets
+<tab>     Autocomplete with an snippet
+<c-b>     Navigate snippet fields after pressing <tab>
+
+
+COMMAND             ACTION
+:UltiSnipsEdit      Open the snippet editor.
+```
+
+Git:
+
+```text
+,gd       Diff (toggle)
+,gm       Mergetool
+<c-b>     Go to next field (After autocomplete w/ snippet)
+<c-z>     Go to prev field
+```
+
 
 BORDER CASE STRATEGIES
 -------------------------------------------
