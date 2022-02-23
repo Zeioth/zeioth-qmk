@@ -18,7 +18,6 @@
 
 # QMK-specific
 api_data/v1
-doxygen/
 quantum/version.h
 *.bin
 *.eep
@@ -86,3 +85,8 @@ __pycache__
 
 # Allow to exist but don't include it in the repo
 user_song_list.h
+
+# clangd
+compile_commands.json
+.clangd/
+.cache/
