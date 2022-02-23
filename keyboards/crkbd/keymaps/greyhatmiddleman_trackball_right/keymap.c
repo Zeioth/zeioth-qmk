@@ -31,10 +31,10 @@ enum crkbd_layers {
 };
 
 
-enum trackball_keycodes {
-    BALL_LC = SAFE_RANGE,
-    BALL_SCR
-};
+//enum trackball_keycodes {
+//    BALL_LC = SAFE_RANGE,
+//    BALL_SCR
+//};
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -55,7 +55,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_TAB,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX,BALL_SCR, BALL_LC,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX, XXXXXXX,
+//      KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX,BALL_SCR, BALL_LC,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX, XXXXXXX,
+      KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -100,7 +101,7 @@ void oled_render_layer_state(void) {
         break;
     default:
         oled_write_ln_P(PSTR(""), false);
-	break;
+        break;
     }
 }
 
@@ -156,20 +157,21 @@ void oled_render_logo(void) {
     oled_write_P(crkbd_logo, false);
 }
 
-void oled_task_user(void) {
+bool oled_task_user(void) {
     if (is_keyboard_master()) {
         oled_render_layer_state();
         oled_render_keylog();
     } else {
         oled_render_logo();
     }
+
+    return false;
 }
 #endif
 
 
 void keyboard_post_init_user(void) {
-
-#ifdef PIMORONI_TRACKBALL_ENABLE
+#ifdef PIMORONI_TRACKBALL_ENABLE_TESTING
     trackball_set_rgbw(0,0,0,80);
 #endif
 }
@@ -177,7 +179,7 @@ void keyboard_post_init_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record){
   switch (keycode){
-#ifdef PIMORONI_TRACKBALL_ENABLE
+#ifdef PIMORONI_TRACKBALL_ENABLE_TESTING
   case BALL_LC:
      record->event.pressed?register_code(KC_BTN1):unregister_code(KC_BTN1);
      break;
@@ -201,7 +203,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record){
 }
 
 
-#ifdef PIMORONI_TRACKBALL_ENABLE
+#ifdef PIMORONI_TRACKBALL_ENABLE_TESTING
 layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
     case _BASE:
