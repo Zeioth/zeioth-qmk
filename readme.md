@@ -1,4 +1,4 @@
-Backup of my keyboard drivers. Feel free to get ides for yours.
+Backup of my keyboard drivers. Feel free to get ideas for yours.
 
 # Instructions
 After you clone this repo, run this inside of it:
