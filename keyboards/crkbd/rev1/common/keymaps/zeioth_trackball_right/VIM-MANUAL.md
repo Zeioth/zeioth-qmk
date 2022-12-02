@@ -22,7 +22,6 @@ refer to the official documentation.
   * [coding](#coding)
 * strategies for border cases
   * [align elements](#align-elements)
-  * [debugging/compiling](#debuggingcompiling)
 
 VERBS
 -------------------------------------
@@ -202,6 +201,31 @@ let g:lead_maps = {
     \'x': "blame  (enable)",
     \'m': "mergetool  (local/merged/remote)",
   \},
+  \'d': {
+    \'name': "[DEBUGGER]",
+    \'h': "start   (debugging)",
+    \'s': "stop (debugging)",
+    \'r': "restart (debugging w/ same config)",
+    \'b': "toggle (breakpoint)",
+    \'l': "toggle  (logpoint or conditional break)",
+    \'u': "add  (fnc. breakpoint under cursor)",
+    \'c': "go     (to cursor)",
+    \'n': "step    (next)",
+    \'+': "step+  (into function)",
+    \'-': "step-  (out of function)",
+    \'>': "move+  (current call stack)",
+    \'<': "move-  (current call stack)",
+    \'e': "eval (expression)",
+    \'j': "run (makefile)",
+    \'f': "run (program)",
+    \'t': {
+      \'name': "[TESTS]",
+      \'e': "e2e test (this)",
+      \'ae': "e2e tests (all)",
+      \'u': "unit test(this) ",
+      \'au': "unit tests (all) ",
+    \}
+  \},
   \'b': {
     \'name': "[BUFFER]",
     \'b':     "buffers (fuzzy list)",
@@ -225,10 +249,8 @@ let g:lead_maps = {
   \},
   \'h': {
     \'name': "[FAST]",
-    \'a': "zero",
-    \'s': "25%",
-    \'h': "50%",
-    \'t': "Append (word)",
+    \'h': "0",
+    \'t': "50%",
     \'g': "75%",
   \},
   \'l': {
@@ -250,8 +272,7 @@ let g:ctrl_maps = {
   \'name': "CTRL keymap",
   \'i': "retrace forward",
   \'o': "retrace backwards",
-  \'n': "markdown (start grip)",
-  \'e': "markdown (stop grip)",
+  \'n': "markdown (preview)",
   \'ñ': "yank stack",
   \'j': "global yank",
   \'p': "global paste",
@@ -384,14 +405,13 @@ Go to definition:
 
 ```text
 KEY       ACTION
-gs        Go to docs
+gh        Go to help
 gf        Go to file
 gd        Go to definition
 ctrl+o    go back
 ctrl+i    go forward
 
-
-TAB+rshi  autocompletes
+TAB       autocomplete code definition
 ```
 
 Coc
@@ -437,6 +457,7 @@ Markdown:
 
 ```text
 KEY       ACTION
+<c-n>     preview in browser
 ,n        add unordered item  
 ,ld       insert a line of dashes 
 ,lh       insert a line of hashes
@@ -455,9 +476,33 @@ COMMAND             ACTION
 :UltiSnipsEdit      Open the snippet editor.
 ```
 
+Debugger:
+
+```text
+KEY       ACTION
+,gdj      Compile (project)
+,gdf      Run (project)
+
+,gdr      Restart/Start (debugger)
+,gds      Stop (debugger)
+,gdh      Start (A different debugger)
+
+,gdn      Next (line)
+,gdc      To cursor (line)
+,gdb      Breakpoint (line)
+
+,gdte     Debugger test e2e
+,gdtae    Debugger test all e2e
+,gdtu     Debugger test unit
+,gdtau    Debugged test all unit
+
+```
+
 Git:
 
 ```text
+KEY       ACTION
+,gt       Gitui
 ,gd       Diff (toggle)
 ,gm       Mergetool
 <c-b>     Go to next field (After autocomplete w/ snippet)
@@ -474,17 +519,3 @@ BORDER CASE STRATEGIES
 COMMAND          ACTION
 :Tabular /,      Align the words of the paragraph with ',' as separator.
 ```
-
-# Debugging/compiling
-
-This operations depend of the language. I recommend using external tools,
-in order to keep vim clean.
-
-```text
-LANG        TOOL
-Python      pycharm
-C#          monodevelop
-JS          Chrome/Firerox
-Android     Androidstudio
-```
-

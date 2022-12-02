@@ -34,7 +34,7 @@ in I3/VIM particulary. It can be extended with extra layers and modes.
 //         |   |   |   |               |   |   |  |
    BCSP    q   d   r   w   b       j   f   u   p  ñ     BSPC 
    CTL     a   s   h   t   g       y   n   e   o  i     ´`      
-   SHIF    z   x   m   c   v       k   l   ,   .  ?¿    RLOCK
+   SHIF    z   x   m   c   v       k   l   ,   .  ?¿    SHIF
 
                   SUP LOW ENT      SPA RAI ALT
 //                     |                |
@@ -45,7 +45,7 @@ in I3/VIM particulary. It can be extended with extra layers and modes.
 //          |   |   |   |               |   |   |  |
     WIN     4   3   2   1   5       0   6   7   8  9     AGR      
     CTL     !   #   "   '   %       +   -   *   /  =     ALT      
-    SHIF    <   >   (   )   &       ||  }   {   ]  [     RLOCK
+    SHIF    <   >   (   )   &       ||  }   {   ]  [     SHIF
 
                   SUP LOW           BPC RAI DEL
 //                     |                |
@@ -56,7 +56,7 @@ in I3/VIM particulary. It can be extended with extra layers and modes.
 //          |   |   |   |               |   |   |  |
 //  WIN     |   |   |   |               |   |   |  |     AGR      
     CTL     ¡   ~   ¨   ·   ¬       @   _   ^   \        ALT     
-    SHIF    ←   →   €   $   ª       º                    RLOCK
+    SHIF    ←   →   €   $   ª       º                    SHIF
 
                   SUP LOW           BSP RAI DEL
 //                     |                |
@@ -75,9 +75,9 @@ in I3/VIM particulary. It can be extended with extra layers and modes.
 // [WORKSPACES, MEDIA CONTROLS, KILL]
 // [LAYOUT, SCRATCHPAD]
 //         |   |   |   |                   |   |   |  |
-   WIN     lok vd vu   m    kl       xkl   p   <   >  pwd   AGR      
-   CTL      7   1   2   3    FS       wtab 6   5   4  8          
-   SHIF    gap res move scp lym      flo   wp  wn FW   ri3   RLOCK
+   WIN     lok vd vu   m             gkl   p   <   >  pwd   AGR      
+   CTL      7   1   2   3    FS      wtab  6   5   4  8          
+   SHIF    gap res move scp lym      flo   wp  wn FW  ri3   SHIF
    
                   SUP LOW          BSP RAI DEL
 //                     |                |
@@ -87,10 +87,10 @@ in I3/VIM particulary. It can be extended with extra layers and modes.
 ```c
 // [MOVE ELEMENT]
 // [MOVE WORKSPACE]
-//         |   |   |   |                |   |   |   |
+//         |   |   |   |    kl          |   |   |   |
    WIN     |   |   |   |                |   |   |   |     AGR      
    CTL    mv5 mv6 mv7 mv8              mv1 mv2 mv3 mv4           
-   SHIF    |   |   |  mscp              |   |   |   |     RLOCK
+   SHIF    |   |   |  mscp              |   |   |   |     SHIF
 
                   SUP LOW           BSP RAI DEL
 //                     |                |
@@ -103,7 +103,7 @@ in I3/VIM particulary. It can be extended with extra layers and modes.
 //         |   |   |   |                 |   |   |   |
    WIN    ci  cip cis ciw ciB        HOM END PD  PU  |   AGR      
    CTL    vit vip vis viw viB         l   d   u   r AS*
-   SHIF   dit dip dis diw diB           gmd gmu gtd gtu  RLOCK
+   SHIF   dit dip dis diw diB           gmd gmu gtd gtu  SHIF
 
                   SUP LOW              RAI ALT
 //                     |                |
@@ -130,7 +130,7 @@ in I3/VIM particulary. It can be extended with extra layers and modes.
 //         |   |   |   |                |   |   |   |
    wea    bk  tb  sc  emo ex       rng  lc  mu  rc  vim   man 
    CTL    F11 doc act rof           mc  ml  md  mr  F1e   SP0         
-   SHIF   F4  F3  F2  F1 F5        F10  F6  F7  F8  F9    RLOCK
+   SHIF   F4  F3  F2  F1 F5        F10  F6  F7  F8  F9    SHIF
 
                   SUP LOW          SP2 SP1 ALT
 //                     |                |
@@ -209,7 +209,7 @@ in I3/VIM particulary. It can be extended with extra layers and modes.
 
 ## modes
 The idea after modes is pretty simple: All layers remain the same, but
-macros in the raise layer, which usualy is reserved for vim, are replaced
+macros in the raise layer, which usually is reserved for vim, are replaced
 by new ones. For example, if you create a "gimp" layer, you would bind your
 macros there.
 

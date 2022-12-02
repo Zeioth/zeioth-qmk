@@ -1,6 +1,6 @@
 
 MOUSEKEY_ENABLE      = yes    # Mouse keys
-AUTO_SHIFT_ENABLE    = yes    # Auto presses shift on key hold 
+AUTO_SHIFT_ENABLE    = no     # Auto presses shift on key hold 
 DYNAMIC_MACRO_ENABLE = no
 EXTRAKEY_ENABLE      = yes 
 

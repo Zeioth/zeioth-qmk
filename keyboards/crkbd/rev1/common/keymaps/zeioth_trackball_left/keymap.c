@@ -56,6 +56,7 @@ enum custom_keycodes {
   CKC_CTRLBS,
   CKC_BSPC,
   CKC_RLOCK,
+  CKC_RSFT,
   // SUPER LAYER KEYCODES
   M_WS1,
   M_WS2,
@@ -159,7 +160,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+-----------------+-----------|
       KC_LCTL,    KC_A,    KC_S,    KC_H,    KC_T,    KC_G,                         KC_Y,    KC_N,    KC_E,    KC_O, KC_I,            CKC_ACCENT,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+-----------------+-----------|
-      KC_LSFT,    KC_Z,    KC_X,    KC_M,    KC_C,    KC_V,                         KC_K,    KC_L, KC_COMM,  KC_DOT, CKC_QMA,           CKC_RLOCK,\
+      KC_LSFT,    KC_Z,    KC_X,    KC_M,    KC_C,    KC_V,                         KC_K,    KC_L, KC_COMM,  KC_DOT, CKC_QMA,            CKC_RSFT,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+-----------------+-----------|
                                           SUPER,   LOWER,    KC_SPC,     KC_ENT, RAISE,   KC_LAPO \
                                       //`--------------------------'  `--------------------------'
@@ -172,7 +173,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+-------------------+----------------+--------------+---------|                    |-------+----------------+--------------+-----------------+--------+---------|
       KC_LCTL,   M_WS7,              M_WS1,           M_WS2,         M_WS3,    I3_FS,                   I3_WINTAB,           M_WS4,         M_WS5,           M_WS6,     M_WS8,   KC_NO,\
   //|--------+--------+-------------------+----------------+--------------+---------|                    |-------+----------------+--------------+--------------------------+---------|
-      KC_LSFT, I3_DISPLAYS,          I3_RESIZE,         I3_MOVE,       I3_SPAD,   I3_LYM,                    I3_FLOAT,           I3_PW,         I3_NW,     I3_SCREENSHOT, I3_RESET, CKC_RLOCK,\
+      KC_LSFT, I3_DISPLAYS,          I3_RESIZE,         I3_MOVE,       I3_SPAD,   I3_LYM,                    I3_FLOAT,           I3_PW,         I3_NW,     I3_SCREENSHOT, I3_RESET, CKC_RSFT,\
   //|--------+--------+-------------------+----------------+--------------+-----------------|  |---------+-------+----------------+--------------+------------------+--------+---------|
                                                                      SUPER,    LOWER, ADJUST,  KC_NO, RAISE, KC_DEL \
                                                                     //`---------------------'  `------------------------'
@@ -185,7 +186,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+----------+---------+----------+-----------+---------|                   |--------+----------+-------------+----------+----------+------------|
         KC_LCTL, CKC_EXCLAM, CKC_HASH, CKC_QUOT, CKC_DQUOT, CKC_PERC,                    CKC_PLUS, CKC_MINUS, CKC_ASTERISK, CKC_SLASH, CKC_EQUAL,    KC_LAPO,\
     //|--------+----------+---------+----------+-----------+---------|                   |--------+----------+-------------+----------+----------+------------|
-        KC_LSFT, CKC_LESS,  CKC_MORE, CKC_O_PAR,  CKC_C_PAR, CKC_AND,                     CKC_OR, CKC_C_CUR,    CKC_O_CUR, CKC_C_BRK, CKC_O_BRK,  CKC_RLOCK,\
+        KC_LSFT, CKC_LESS,  CKC_MORE, CKC_O_PAR,  CKC_C_PAR, CKC_AND,                     CKC_OR, CKC_C_CUR,    CKC_O_CUR, CKC_C_BRK, CKC_O_BRK,     CKC_RSFT,\
     //|--------+----------+---------+----------+-----------+---------+--------|  |-------+--------+----------+-------------+----------+----------+------------|
                                                       SUPER,    LOWER,  KC_TAB,    KC_TAB,   RAISE, KC_DEL \
                                                   //`-------------------------'  `-------+--------+---------'
@@ -198,7 +199,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LCTL, VIM_CIT,   VIM_CIP, VIM_CIS, VIM_CIW, VIM_CIB,                      KC_LEFT, KC_DOWN,  KC_UP, KC_RIGHT, KC_ASTG, KC_NO,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT, VIM_VIT,   VIM_VIP, VIM_VIS, VIM_VIW, VIM_VIB,                     XXXXXXX, VIM_GMD,  VIM_GMU, VIM_GTD, VIM_GTU, CKC_RLOCK,\
+      KC_LSFT, VIM_VIT,   VIM_VIP, VIM_VIS, VIM_VIW, VIM_VIB,                     XXXXXXX, VIM_GMD,  VIM_GMU, VIM_GTD, VIM_GTU, CKC_RSFT,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                            SUPER, LOWER, CKC_CTRLBS,  CKC_CTRLBS,   RAISE, KC_NO \
                                       //`--------------------------'  `--------------------------'
@@ -211,7 +212,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+---------------+------------+-------------------+-------------+--------|                    |--------+-----------+-----------+-----------+--------+--------|
       KC_LCTL,         KC_F11, M_ROFI_DOCS,  M_ROFI_ACTIVITIES,      M_ROFI,    M_CALC,                   KC_MS_BTN1,    KC_MS_L,    KC_MS_D,    KC_MS_R,  KC_F12, KC_ACL1,\
   //|--------+---------------+------------+-------------------+-------------+--------|                    |--------+-----------+-----------+-----------+--------+--------|
-    KC_LSHIFT,          KC_F4,       KC_F3,              KC_F2,        KC_F1,   KC_F5,                      KC_F10,       KC_F6,      KC_F7,      KC_F8,   KC_F9, CKC_RLOCK,\
+    KC_LSHIFT,          KC_F4,       KC_F3,              KC_F2,        KC_F1,   KC_F5,                      KC_F10,       KC_F6,      KC_F7,      KC_F8,   KC_F9, CKC_RSFT,\
   //|--------+---------------+------------+-------------------+-------------+--------+--------|  |--------+--------+-----------+-----------+-----------+--------+--------|
                                                                      KC_ACL2,   LOWER,   KC_NO,    KC_ACL2, KC_ACL1, KC_LAPO \
                                                                  //`--------------------------'  `--------------------------'
@@ -279,6 +280,34 @@ void press_virtual_key(uint16_t kc1, uint16_t kc2, bool lshift1, bool ralt1,
     set_mods(tmp_mod);
   }
 }
+
+// Same as press_virtual_key, but allow all modifiers. For border cases.
+void press_virtual_key_complex(uint16_t kc1, uint16_t kc2, 
+                       bool lshift1, bool ctrl1, bool lgui1, bool lalt1, bool ralt1, 
+                       bool lshift2, bool ctrl2, bool lgui2, bool lalt2, bool ralt2) 
+{
+  // TODO: Implement the paramters you are already passing.
+  tmp_mod = get_mods();
+  if (!(get_mods() & MOD_BIT(KC_LSHIFT) || get_mods() & MOD_BIT(KC_RSHIFT))){
+    if(lshift1){register_code(KC_LSHIFT);}
+    if(ctrl1){register_code(KC_LCTL);}
+    if(lgui1){register_code(KC_LGUI);}
+    if(lalt1){register_code(KC_LALT);}
+    if(ralt1){register_code(KC_RALT);}
+    register_code(kc1);
+    set_mods(tmp_mod);
+  } else{
+    clear_mods();
+    if(lshift2){register_code(KC_LSHIFT);}
+    if(ctrl2){register_code(KC_LCTL);}
+    if(lgui2){register_code(KC_LGUI);}
+    if(lalt2){register_code(KC_LALT);}
+    if(ralt2){register_code(KC_RALT);}
+    register_code(kc2);
+    set_mods(tmp_mod);
+  }
+}
+
 
 // presses a keyboard shortcut
 void trigger_shortcut(uint16_t kc1, bool lshift,  bool ctrl, bool lgui, 
@@ -364,8 +393,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     // BASE LAYER MACROS 
     // -----------------------------------------------------------------------
+    /* case CKC_CTRLBS: // CTRL + BACKSPACE (without repetition)*/
+    /*   if (record->event.pressed) {trigger_shortcut(KC_BSPC,0,1,0,0,0);} */
+    /*   return false; */
     case CKC_CTRLBS: // CTRL + BACKSPACE
-      if (record->event.pressed) {trigger_shortcut(KC_BSPC,0,1,0,0,0);}
+      if (record->event.pressed) {
+        press_virtual_key_complex(KC_BSPC, KC_DEL, 0, 1, 0, 0, 0,
+                                                   0, 1, 0, 0, 0);}
+      else {clear_keyboard_but_mods();}
       return false;
     case CKC_BSPC: // BACKSPACE AND DEL 
       if (record->event.pressed) {press_virtual_key(KC_BSPC, KC_DEL, 0, 0, 0, 0);}
@@ -375,6 +410,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         if ((get_mods() & MOD_BIT(KC_LSHIFT))){layer_on(_ARROW);}
         else {layer_invert(_RAISE);}
+      }
+      else {clear_keyboard_but_mods();}
+      return false;
+    case CKC_RSFT: // RSHIFT AND ARROW MODE
+      if (record->event.pressed) {
+        if ((get_mods() & MOD_BIT(KC_LSHIFT))){layer_on(_ARROW);}
       }
       else {clear_keyboard_but_mods();}
       return false;
@@ -454,7 +495,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {trigger_shortcut(KC_TAB,0,0,1,0,0);}
       return false;
     case I3_KILL:
-      if (record->event.pressed) {trigger_shortcut(KC_Q,1,0,1,0,0);}
+      if (record->event.pressed) {
+        press_virtual_key_complex(KC_NO, KC_Q, 1, 0, 1, 0, 0,
+                                               1, 0, 1, 0, 0);
+        clear_keyboard(); // Don't repeat
+      }
       return false;
     case I3_XKILL:
       if (record->event.pressed) {trigger_shortcut(KC_X,1,0,1,0,0);}
@@ -741,10 +786,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {trigger_shortcut(KC_M,0,1,1,0,0);}
       return false;
     case M_ROFI_DOCS:
-      if (record->event.pressed) {trigger_shortcut(KC_D,0,1,1,0,0);}
+      // if (record->event.pressed) {trigger_shortcut(KC_D,0,1,1,0,0);}
+      if (record->event.pressed) {trigger_shortcut(KC_T,1,0,1,0,0);}
       return false;
     case M_ROFI_ACTIVITIES:
-      if (record->event.pressed) {trigger_shortcut(KC_A,0,1,1,0,0);}
+      //if (record->event.pressed) {trigger_shortcut(KC_A,0,1,1,0,0);}
+      if (record->event.pressed) {trigger_shortcut(KC_T,0,0,1,0,0);}
       return false;
     case M_RANGER:
       if (record->event.pressed) {trigger_shortcut(KC_F1,0,0,1,0,0);}

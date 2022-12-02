@@ -6,8 +6,8 @@ These are the recommended keybindingss for workman.
 ### VIM (NORMAL MODE+VISUAL) 
 ```c
 //         |   |   |   |               |   |   |  |
-   WIN     q   d   r   w   b       y   f   u   p  ñ     AGR
-   CTL     a   s   e   t   g       h   j   k   l  i     ´`      
+   WIN     q   d   r   w   t       y   f   u   p  ñ     AGR
+   CTL     a   s   b   e   g       h   j   k   l  i     ´`      
    SHIF    z   x   m   c   v       k   o   ,   .  ?¿    SHIF
 
                   SUP LOW ENT      SPA RAI ALT

@@ -1,46 +1,52 @@
-Backup of my keyboard drivers. Feel free to get ides for yours.
+# Zeioth crkbd/corne firmware
 
-# Instructions
+This firmware is considerably more advanced than what you find around.
+Feel free to get ideas from here, or use it as base for your own driver.
+
+## HOW TO USE
+
 After you clone this repo, run this inside of it:
 
     qmk setup
 
-QMK cumbersome from here.
+Then:
 
-# Quantum Mechanical Keyboard Firmware
+* check ./keyboards/crkbd/rev1/common/keymaps
+* You will find **'zeioth_trackball_left'** and **'zeioth_trackball_right'**
+* Inside each of this folders you will find a README.md with documentation.
+  Enjoy!
 
-[![Current Version](https://img.shields.io/github/tag/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/tags)
-[![Build Status](https://travis-ci.org/qmk/qmk_firmware.svg?branch=master)](https://travis-ci.org/qmk/qmk_firmware)
-[![Discord](https://img.shields.io/discord/440868230475677696.svg)](https://discord.gg/Uq7gcHh)
-[![Docs Status](https://img.shields.io/badge/docs-ready-orange.svg)](https://docs.qmk.fm)
-[![GitHub contributors](https://img.shields.io/github/contributors/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/pulse/monthly)
-[![GitHub forks](https://img.shields.io/github/forks/qmk/qmk_firmware.svg?style=social&label=Fork)](https://github.com/qmk/qmk_firmware/)
+## Cool features
 
-This is a keyboard firmware based on the [tmk\_keyboard firmware](https://github.com/tmk/tmk_keyboard) with some useful features for Atmel AVR and ARM controllers, and more specifically, the [OLKB product line](https://olkb.com), the [ErgoDox EZ](https://ergodox-ez.com) keyboard, and the [Clueboard product line](https://clueboard.co).
+* Pimoroni trackball support (if you are not gonna use it, disable it in the
+  settings)
+* Full RGB support.
+* Macros for full integration with I3/sway.
+* Instruction manuals.
 
-## Documentation
+## Limitations
 
-* [See the official documentation on docs.qmk.fm](https://docs.qmk.fm)
+RGB is currently disabled by default in the config file. I did this so I can pack
+as much features as possibly in the little space provided by pro-micro.
 
-The docs are powered by [Docsify](https://docsify.js.org/) and hosted on [GitHub](/docs/). They are also viewable offline; see [Previewing the Documentation](https://docs.qmk.fm/#/contributing?id=previewing-the-documentation) for more details.
+If you wan't RGB, you can either use a bigger controller like nice!nano,
+or just remove a couple macros you don't need from the keymap, it should fit
+with rbg enabled without much effort.
 
-You can request changes by making a fork and opening a [pull request](https://github.com/qmk/qmk_firmware/pulls), or by clicking the "Edit this page" link at the bottom of any page.
+Display is also disabled by default. The reason is, when using a pointing device
+like pimoroni trackball, or any other, it's not possible to add logic to the
+display (because only the main side can have add logic to the display in QMK,
+out of the box, and we use it for pimoroni).
 
-## Supported Keyboards
+But if you don't use pomorini, then you can disable it and enable display
+instead on both sides if you want.
 
-* [Planck](/keyboards/planck/)
-* [Preonic](/keyboards/preonic/)
-* [ErgoDox EZ](/keyboards/ergodox_ez/)
-* [Clueboard](/keyboards/clueboard/)
-* [Cluepad](/keyboards/clueboard/17/)
-* [Atreus](/keyboards/atreus/)
+## CREDITS
 
-The project also includes community support for [lots of other keyboards](/keyboards/).
+This firmware is based on [the work of greyhatmiddleman](https://github.com/greyhatmiddleman/qmk_firmware), who added pimoroni
+trackball support to crkbd. Note: Apparently he moved the project from 'crkbd/rev1/common' to 'crkbd/keymaps'. Feel free to take his code as reference if you wan't to update that. It's not necessary at all. Just in case you have OCD or something.
 
-## Maintainers
+## TODO
 
-QMK is developed and maintained by Jack Humbert of OLKB with contributions from the community, and of course, [Hasu](https://github.com/tmk). The OLKB product firmwares are maintained by [Jack Humbert](https://github.com/jackhumbert), the Ergodox EZ by [ZSA Technology Labs](https://github.com/zsa), the Clueboard by [Zach White](https://github.com/skullydazed), and the Atreus by [Phil Hagelberg](https://github.com/technomancy).
-
-## Official Website
-
-[qmk.fm](https://qmk.fm) is the official website of QMK, where you can find links to this page, the documentation, and the keyboards supported by QMK.
+* Add cool photos
+* Donations button? Never did that shit before.
