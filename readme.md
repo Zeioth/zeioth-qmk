@@ -205,7 +205,7 @@ in Sway/VIM particulary. It can be extended with extra layers and modes.
 ### HOW TO USE
 -----------------------------------------------------------------------------
 ## layers
-* base: workman standar keys.
+* base: Colemak-dh standar keys.
 * super: System macros. By default optimized for Manjaro I3.
 * lower: Symbols.
 * raise: Reserved for specific programs (vim, when on vim mode, etc)
