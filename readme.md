@@ -1,36 +1,246 @@
-# Quantum Mechanical Keyboard Firmware
+# Zeioth QMK drivers (crkbd/corne keyboard)
 
-[![Current Version](https://img.shields.io/github/tag/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/tags)
-[![Discord](https://img.shields.io/discord/440868230475677696.svg)](https://discord.gg/Uq7gcHh)
-[![Docs Status](https://img.shields.io/badge/docs-ready-orange.svg)](https://docs.qmk.fm)
-[![GitHub contributors](https://img.shields.io/github/contributors/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/pulse/monthly)
-[![GitHub forks](https://img.shields.io/github/forks/qmk/qmk_firmware.svg?style=social&label=Fork)](https://github.com/qmk/qmk_firmware/)
+My wired keyboard firmware. Includes support for the  pimoroni trackball.
 
-This is a keyboard firmware based on the [tmk\_keyboard firmware](https://github.com/tmk/tmk_keyboard) with some useful features for Atmel AVR and ARM controllers, and more specifically, the [OLKB product line](https://olkb.com), the [ErgoDox EZ](https://ergodox-ez.com) keyboard, and the [Clueboard product line](https://clueboard.co).
 
-## Documentation
+## Keymap
+Optimized for bilingual programmers who work in chinese/english/spanish.
+Includes a bunch of macro examples that I use to increase my productivity
+in Sway/VIM particulary. It can be extended with extra layers and modes.
 
-* [See the official documentation on docs.qmk.fm](https://docs.qmk.fm)
+* base maps
+  * [base](#base-colemak-dh-for-spanish)
+  * [lower](#lower)
+  * [lower (shifted)](#lower-shifted)
+* advanced functions
+  * [super](#super)
+  * [raise](#raise)
+  * [raise (shifted)](#raise-shifted)
+  * [hyper](#hyper-super--raise)
+  * [conf](#conf)
+* special layers
+  * [arrow layer](#arrow-layer)
+* other maps
+  * [alt (tmux)](#alt-tmux)
+  * [alt (ranger)](#alt-ranger)
+* [how to use](#how-to-use)
+* [how to setup](#how-to-setup)
+* [how to flash](#how-to-flash)
+* [design notes](#design-notes)
 
-The docs are powered by [Docsify](https://docsify.js.org/) and hosted on [GitHub](/docs/). They are also viewable offline; see [Previewing the Documentation](https://docs.qmk.fm/#/contributing?id=previewing-the-documentation) for more details.
+-----------------------------------------------------------------------------
+### BASE MAPS
+-----------------------------------------------------------------------------
 
-You can request changes by making a fork and opening a [pull request](https://github.com/qmk/qmk_firmware/pulls), or by clicking the "Edit this page" link at the bottom of any page.
 
-## Supported Keyboards
+### BASE (colemak-dh for spanish)
+```c
+//         |   |   |   |               |   |   |  |
+   BCSP    q   w   f   p   b       j   l   u   y  ñ     BSPC
+   CTL     a   r   s   t   g       y   n   e   o  i     ´`
+   SHIF    z   x   c   d   v       k   h   ,   .  ?¿    SHIF
 
-* [Planck](/keyboards/planck/)
-* [Preonic](/keyboards/preonic/)
-* [ErgoDox EZ](/keyboards/ergodox_ez/)
-* [Clueboard](/keyboards/clueboard/)
-* [Cluepad](/keyboards/clueboard/17/)
-* [Atreus](/keyboards/atreus/)
+                  SUP LOW ENT      SPA RAI ALT
+//                     |                |
+```
 
-The project also includes community support for [lots of other keyboards](/keyboards/).
+### LOWER
+```c
+//          |   |   |   |               |   |   |  |
+    WIN     4   3   2   1   5       0   6   7   8  9     AGR
+    CTL     !   #   "   '   %       +   -   *   /  =     ALT
+    SHIF    <   >   (   )   &       ||  }   {   ]  [     SHIF
 
-## Maintainers
+                  SUP LOW           BPC RAI DEL
+//                     |                |
+```
 
-QMK is developed and maintained by Jack Humbert of OLKB with contributions from the community, and of course, [Hasu](https://github.com/tmk). The OLKB product firmwares are maintained by [Jack Humbert](https://github.com/jackhumbert), the Ergodox EZ by [ZSA Technology Labs](https://github.com/zsa), the Clueboard by [Zach White](https://github.com/skullydazed), and the Atreus by [Phil Hagelberg](https://github.com/technomancy).
+### LOWER (SHIFTED)
+```c
+//          |   |   |   |               |   |   |  |
+//  WIN     |   |   |   |               |   |   |  |     AGR
+    CTL     ¡   ~   ¨   ·   ¬       @   _   ^   \        ALT
+    SHIF    ←   →   €   $   ª       º                    SHIF
 
-## Official Website
+                  SUP LOW           BSP RAI DEL
+//                     |                |
+```
 
-[qmk.fm](https://qmk.fm) is the official website of QMK, where you can find links to this page, the documentation, and the keyboards supported by QMK.
+* ALT work as ESC when tapped.
+* RLOCK keeps the RAISE layer active until pressed again.
+
+-----------------------------------------------------------------------------
+### ADVANCED FUNCTIONS
+-----------------------------------------------------------------------------
+
+
+### SUPER
+```c
+// [WORKSPACES, MEDIA CONTROLS, KILL]
+// [LAYOUT, SCRATCHPAD]
+//         |   |   |   |                   |   |   |  |
+   WIN     lok vd vu   m             gkl   p   <   >  pwd   AGR
+   CTL      7   1   2   3    FS      wtab  6   5   4  8
+   SHIF    gap res move scp lym      flo   wp  wn FW  ri3   SHIF
+
+                  SUP LOW          BSP RAI DEL
+//                     |                |
+```
+
+### SUPER (SHIFTED)
+```c
+// [MOVE ELEMENT]
+// [MOVE WORKSPACE]
+//         |   |   |   |    kl          |   |   |   |
+   WIN     |   |   |   |                |   |   |   |     AGR
+   CTL    mv5 mv6 mv7 mv8              mv1 mv2 mv3 mv4
+   SHIF    |   |   |  mscp              |   |   |   |     SHIF
+
+                  SUP LOW           BSP RAI DEL
+//                     |                |
+```
+
+### RAISE
+```c
+// [ COL, PAG, (i)SELECTION, MOV]
+// [ GOTO CLASS, GOTO METHOD]
+//         |   |   |   |                 |   |   |   |
+   WIN    ci  cip cis ciw ciB        HOM END PD  PU  |   AGR
+   CTL    vit vip vis viw viB         l   d   u   r AS*
+   SHIF   dit dip dis diw diB           gmd gmu gtd gtu  SHIF
+
+                  SUP LOW              RAI ALT
+//                     |                |
+```
+
+
+### RAISE (SHIFTED)
+```c
+// [(a) SELECTION]
+//         |   |   |   |               |   |   |   |
+   WIN    dat dap das dip dib
+   CTL    cat cap cas caw cib
+   SHIF   vat vap vas vaw vib         gmd gmu gtd gtu
+
+                  SUP LOW              RAI ALT
+//                     |                |
+```
+
+
+### HYPER [super + raise]
+```c
+// [POWER]
+// [MOVE WORKSPACE]
+//         |   |   |   |                |   |   |   |
+   wea    bk  tb  sc  emo ex       rng  lc  mu  rc  vim   man
+   CTL    F11 doc act rof           mc  ml  md  mr  F1e   SP0
+   SHIF   F4  F3  F2  F1 F5        F10  F6  F7  F8  F9    SHIF
+
+                  SUP LOW          SP2 SP1 ALT
+//                     |                |
+```
+
+### CONF
+```c
+// [POWER]
+// [MOVE WORKSPACE]
+//         |   |   |   |                |   |   |   |
+              sp+ hu+ sa+ va+          mod  |   |   |
+              sp- hu- sa- va-           |  hlp vhlp |
+   FX      |   |   |  tog               |   |   |   |
+
+                  SUP    SPA               ALT
+//                     |                |
+```
+
+* For more info about AS look (here)[https://docs.qmk.fm/#/feature_auto_shift].
+
+-----------------------------------------------------------------------------
+### SPECIAL LAYERS
+-----------------------------------------------------------------------------
+### ARROW LAYER [SHIF+RLOCK]
+```c
+// [ARROWS]
+//         |   |   |   |                   |   |   |   |
+      BASE                                                      BASE
+
+                       UP                  UP
+
+                 LEFT DOWN RIGHT    LEFT DOWN RIGHT
+//                     |                   |
+```
+
+
+
+-----------------------------------------------------------------------------
+### OTHER MAPS
+-----------------------------------------------------------------------------
+### ALT (tmux)
+```c
+// [WINDOWS, PANS, KILL]
+// [SCROLL, FUZZY, SHOW]
+//         |   |   |   |                   |   |   |   |
+   WIN     w1  w2  w3  w4 tgw        rng       su  sd  vim  AGR
+   CTL     p4  p3  p2  p1 tgp             fcd ffi fh
+   SHIF    ks  kw  kp  Z             ls   sw  ss            SHIF
+
+                  SUP LOW SPA      ENT RAI ALT
+//                     |                |
+```
+### ALT (ranger)
+```c
+// [POWER]
+//         |   |   |   |                   |   |   |   |
+   WIN                                                     AGR
+   CTL     p4  p3  p2  p1 tgp             fcd ffi fh
+   SHIF                                                    SHIF
+
+                  SUP LOW SPA      ENT RAI ALT
+//                     |                |
+```
+
+**Note**: On Tmux, ALT+ENT spawns a new window with 4 panes.
+
+-----------------------------------------------------------------------------
+### HOW TO USE
+-----------------------------------------------------------------------------
+## layers
+* base: workman standar keys.
+* super: System macros. By default optimized for Manjaro I3.
+* lower: Symbols.
+* raise: Reserved for specific programs (vim, when on vim mode, etc)
+* hyper: Rofi and programs.
+
+## modes
+The idea after modes is pretty simple: All layers remain the same, but
+macros in the raise layer, which usually is reserved for vim, are replaced
+by new ones. For example, if you create a "gimp" layer, you would bind your
+macros there.
+
+-----------------------------------------------------------------------------
+### HOW TO SETUP QMK
+-----------------------------------------------------------------------------
+
+* sudo pacman -S qmk
+* sudo downgrade -S avr-gcc # here choose version 8.x
+* On this repo main directory > sudo make git-submodule
+
+
+You should be able to flash the firmware now. If you find any issue, check QMK
+website because it can change from time to time. Please follow all steps,
+because all of them are necessary.
+
+-----------------------------------------------------------------------------
+### HOW TO FLASH
+-----------------------------------------------------------------------------
+
+Go to the root directory of qmk and run
+
+``` sh
+sudo make clean && sudo qmk flash -kb crkbd -km zeioth_trackball_right
+sudo make clean && sudo qmk flash -kb crkbd -km zeioth_trackball_left
+```
+
+## Credits
+This firmware used [greyhatmiddleman](https://github.com/greyhatmiddleman/crkbd-pimoroni-trackball)
+as reference for the implementation of the pimoroni trackball.
