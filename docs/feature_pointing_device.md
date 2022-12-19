@@ -20,7 +20,7 @@ To use the ADNS 5050 sensor, add this to your `rules.mk`
 POINTING_DEVICE_DRIVER = adns5050
 ```
 
-The ADNS 5050 sensor uses a serial type protocol for communication, and requires an additional light source. 
+The ADNS 5050 sensor uses a serial type protocol for communication, and requires an additional light source.
 
 | Setting            | Description                                                         |
 |--------------------|---------------------------------------------------------------------|
@@ -38,7 +38,7 @@ To use the ADNS 9800 sensor, add this to your `rules.mk`
 POINTING_DEVICE_DRIVER = adns9800
 ```
 
-The ADNS 9800 is an SPI driven optical sensor, that uses laser output for surface tracking. 
+The ADNS 9800 is an SPI driven optical sensor, that uses laser output for surface tracking.
 
 | Setting                | Description                                                            | Default       |
 |------------------------|------------------------------------------------------------------------|---------------|
@@ -49,7 +49,7 @@ The ADNS 9800 is an SPI driven optical sensor, that uses laser output for surfac
 |`ADNS9800_CS_PIN`       | (Required) Sets the Cable Select pin connected to the sensor.          | _not defined_ |
 
 
-The CPI range is 800-8200, in increments of 200. Defaults to 1800 CPI. 
+The CPI range is 800-8200, in increments of 200. Defaults to 1800 CPI.
 
 ### Analog Joystick
 
@@ -122,7 +122,7 @@ To use the Pimoroni Trackball module, add this to your `rules.mk`:
 POINTING_DEVICE_DRIVER = pimoroni_trackball
 ```
 
-The Pimoroni Trackball module is a I2C based breakout board with an RGB enable trackball. 
+The Pimoroni Trackball module is a I2C based breakout board with an RGB enable trackball.
 
 | Setting                             | Description                                                                        | Default |
 |-------------------------------------|------------------------------------------------------------------------------------|---------|
@@ -167,7 +167,7 @@ uint16_t       pointing_device_driver_get_cpi(void) { return 0; }
 void           pointing_device_driver_set_cpi(uint16_t cpi) {}
 ```
 
-!> Ideally, new sensor hardware should be added to `drivers/sensors/` and `quantum/pointing_device_drivers.c`, but there may be cases where it's very specific to the hardware.  So these functions are provided, just in case. 
+!> Ideally, new sensor hardware should be added to `drivers/sensors/` and `quantum/pointing_device_drivers.c`, but there may be cases where it's very specific to the hardware.  So these functions are provided, just in case.
 
 ## Common Configuration
 
@@ -181,7 +181,7 @@ void           pointing_device_driver_set_cpi(uint16_t cpi) {}
 |`POINTING_DEVICE_MOTION_PIN`   | (Optional) If supported, will only read from sensor if pin is active. | _not defined_ |
 
 
-## Callbacks and Functions 
+## Callbacks and Functions
 
 | Function                          | Description                                                                                                                            |
 |-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
@@ -192,9 +192,9 @@ void           pointing_device_driver_set_cpi(uint16_t cpi) {}
 | `pointing_device_handle_buttons(buttons, pressed, button)` | Callback to handle hardware button presses. Returns a `uint8_t`.                                              |
 | `pointing_device_get_cpi(void)`                            | Gets the current CPI/DPI setting from the sensor, if supported.                                               |
 | `pointing_device_set_cpi(uint16_t)`                        | Sets the CPI/DPI, if supported.                                                                               |
-| `pointing_device_get_report(void)`                         | Returns the current mouse report (as a `mouse_report_t` data structure).                                      | 
-| `pointing_device_set_report(mouse_report)`                 | Sets the mouse report to the assigned `mouse_report_t` data structured passed to the function.                | 
-| `pointing_device_send(void)`                               | Sends the current mouse report to the host system.  Function can be replaced.                                 | 
+| `pointing_device_get_report(void)`                         | Returns the current mouse report (as a `mouse_report_t` data structure).                                      |
+| `pointing_device_set_report(mouse_report)`                 | Sets the mouse report to the assigned `mouse_report_t` data structured passed to the function.                |
+| `pointing_device_send(void)`                               | Sends the current mouse report to the host system.  Function can be replaced.                                 |
 | `has_mouse_report_changed(old, new)`                       | Compares the old and new `mouse_report_t` data and returns true only if it has changed.                       |
 
 
@@ -212,7 +212,7 @@ To manually manipulate the mouse reports outside of the `pointing_device_task_*`
 
 * `pointing_device_get_report()` - Returns the current report_mouse_t that represents the information sent to the host computer
 * `pointing_device_set_report(report_mouse_t newMouseReport)` - Overrides and saves the report_mouse_t to be sent to the host computer
-* `pointing_device_send()` - Sends the mouse report to the host and zeroes out the report. 
+* `pointing_device_send()` - Sends the mouse report to the host and zeroes out the report.
 
 When the mouse report is sent, the x, y, v, and h values are set to 0 (this is done in `pointing_device_send()`, which can be overridden to avoid this behavior).  This way, button states persist, but movement will only occur once.  For further customization, both `pointing_device_init` and `pointing_device_task` can be overridden.
 
@@ -247,7 +247,7 @@ Recall that the mouse report is set to zero (except the buttons) whenever it is 
 
 ### Drag Scroll or Mouse Scroll
 
-A very common implementation is to use the mouse movement to scroll instead of moving the cursor on the system.  This uses the `pointing_device_task_user` callback to intercept and modify the mouse report before it's sent to the host system. 
+A very common implementation is to use the mouse movement to scroll instead of moving the cursor on the system.  This uses the `pointing_device_task_user` callback to intercept and modify the mouse report before it's sent to the host system.
 
 ```c
 enum custom_keycodes {
@@ -273,4 +273,4 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 ```
 
-This allows you to toggle between scrolling and cursor movement by pressing the DRAG_SCROLL key.  
+This allows you to toggle between scrolling and cursor movement by pressing the DRAG_SCROLL key.
