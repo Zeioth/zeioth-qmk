@@ -223,7 +223,7 @@ macros there.
 
 * sudo pacman -S qmk
 * sudo downgrade -S avr-gcc # here choose version 8.x
-* On this repo main directory > sudo make git-submodule
+* sudo make git-submodule   # On the main directory of the branch 'zeioth'
 
 
 You should be able to flash the firmware now. If you find any issue, check QMK
