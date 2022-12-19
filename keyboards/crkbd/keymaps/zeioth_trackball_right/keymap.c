@@ -425,11 +425,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       else {clear_keyboard_but_mods();}
       return false;
-    case CKC_RSFT: // RSHIFT AND ARROW MODE (BUG: CURRENTLY RSHIFT DOESNT WORK)
+    case CKC_RSFT: // RSHIFT AND ARROW MODE
       if (record->event.pressed) {
-        if ((get_mods() & MOD_BIT(KC_LSHIFT))){layer_on(_ARROW);}
+        if (get_mods() & MOD_BIT(KC_LSHIFT)){layer_on(_ARROW);} // ARROW MODE
+        else{register_code(KC_RSHIFT);}                         // RSHIFT
       }
-      else {clear_keyboard_but_mods();}
+      else {clear_keyboard();}
       return false;
 
     // SUPER LAYER MACROS 
