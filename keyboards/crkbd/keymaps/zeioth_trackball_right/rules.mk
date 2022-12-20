@@ -10,18 +10,12 @@ RGB_MATRIX_ENABLE    = no
 VIA_ENABLE           = no     # Enable VIA
 LTO_ENABLE           = yes
 
+# pimoroni (right side)
+POINTING_DEVICE_ENABLE = yes
+POINTING_DEVICE_DRIVER = pimoroni_trackball
+
 SRC +=  ./lib/rgb_state_reader.c \
         ./lib/layer_state_reader.c \
-
-# pimoroni (right side)
-POINTING_DEVICE_DRIVER = pimoroni_trackball
-PIMORONI_TRACKBALL_ENABLE = yes
-ifeq ($(strip $(PIMORONI_TRACKBALL_ENABLE)), yes)
-    POINTING_DEVICE_ENABLE = yes
-    SRC += drivers/sensors/pimoroni_trackball.c
-    QUANTUM_LIB_SRC += i2c_master.c
-endif
-
 
 
 
