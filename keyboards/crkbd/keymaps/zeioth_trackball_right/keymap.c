@@ -334,61 +334,67 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
-// Trackball
-#ifdef PIMORONI_TRACKBALL_ENABLE
+// Pimoroni trackball - Led
+void pimoroni_update_led(void){
+  switch (get_highest_layer(layer_state)) {
+    case _BASE:
+      pimoroni_trackball_set_rgbw(0,0,0,32);   // White
+      break;
+    case _SUPER:
+      pimoroni_trackball_set_rgbw(32,0,0,0);   // Dark red
+       break;
+    case _LOWER:
+       pimoroni_trackball_set_rgbw(0,32,0,0);   // Dark green
+       break;
+    case _RAISE:
+       pimoroni_trackball_set_rgbw(0,0,32,0);   // Dark blue
+       break;
+    case _HYPER:
+       pimoroni_trackball_set_rgbw(32,0,32,0);  // Dark Magenta 
+       break;
+    case _ARROW:
+       pimoroni_trackball_set_rgbw(32,16,16,0); // Pink 
+       break;
+    case _ADJUST:
+       pimoroni_trackball_set_rgbw(32,32,0,0);  // Yellow
+       break;
+    default:
+       pimoroni_trackball_set_rgbw(0,0,0,0); // Turned off
+    }
+}
+
+// Common behavior to all any pointing device driver 
+#ifdef POINTING_DEVICE_ENABLE
 bool set_scrolling = false;
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
 
-// Pimoroni led
-switch (get_highest_layer(layer_state)) {
-  case _BASE:
-    pimoroni_trackball_set_rgbw(0,0,0,32);   // White
-    break;
-  case _SUPER:
-    pimoroni_trackball_set_rgbw(32,0,0,0);   // Dark red
-     break;
-  case _LOWER:
-     pimoroni_trackball_set_rgbw(0,32,0,0);   // Dark green
-     break;
-  case _RAISE:
-     pimoroni_trackball_set_rgbw(0,0,32,0);   // Dark blue
-     break;
-  case _HYPER:
-     pimoroni_trackball_set_rgbw(32,0,32,0);  // Dark Magenta 
-     break;
-  case _ARROW:
-     pimoroni_trackball_set_rgbw(32,16,16,0); // Pink 
-     break;
-  case _ADJUST:
-     pimoroni_trackball_set_rgbw(32,32,0,0);  // Yellow
-     break;
-  default:
-     pimoroni_trackball_set_rgbw(0,0,0,0); // Turned off
+  #ifdef PIMORONI_TRACKBALL_ENABLE
+    pimoroni_update_led();
+  #endif
+
+  // Enable mouse on 
+  if (layer_state_is(_RAISE) || layer_state_is(_LOWER)) {
+      set_scrolling = false;
+  } else {
+      set_scrolling = true;
   }
 
-    // Enable mouse on 
-    if (layer_state_is(_RAISE) || layer_state_is(_LOWER)) {
-        set_scrolling = false;
-    } else {
-        set_scrolling = true;
-    }
-
-    // Overide the way mouse report behaves
-    if (set_scrolling) {
-      mouse_report.h = mouse_report.x;
-      mouse_report.v = -mouse_report.y;
-      mouse_report.x = mouse_report.y = 0;
-    }
-    else{
-      mouse_report.x = mouse_report.x;
-      mouse_report.y = mouse_report.y;
-      mouse_report.h = mouse_report.h;
-      mouse_report.v = mouse_report.v;
-
-    }
-    return mouse_report;
+  // Overide the way mouse report behaves
+  if (set_scrolling) {
+    mouse_report.h = mouse_report.x;
+    mouse_report.v = -mouse_report.y;
+    mouse_report.x = mouse_report.y = 0;
+  }
+  else{
+    mouse_report.x = mouse_report.x;
+    mouse_report.y = mouse_report.y;
+    mouse_report.h = mouse_report.h;
+    mouse_report.v = mouse_report.v;
+   }
+  return mouse_report;
 }
 #endif
+
 
 // ###########################################################################
 // MACROS AND MODES
