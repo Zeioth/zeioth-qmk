@@ -12,6 +12,7 @@ LTO_ENABLE           = yes
 
 # Pimoroni (left side)
 POINTING_DEVICE_DRIVER = pimoroni_trackball
+PIMORONI_TRACKBALL_SCALE = 10  # DPI multiplier
 
 SRC +=  ./lib/rgb_state_reader.c \
         ./lib/layer_state_reader.c \
