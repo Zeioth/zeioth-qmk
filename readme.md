@@ -221,14 +221,14 @@ macros there.
 ### HOW TO SETUP QMK
 -----------------------------------------------------------------------------
 
-* sudo pacman -S qmk
-* sudo downgrade -S avr-gcc # here choose version 8.x
-* sudo make git-submodule   # On the main directory of the branch 'zeioth'
-
+* `sudo pacman -S qmk`
+* `sudo downgrade -S avr-gcc` # here choose version 8.x
+* `sudo make git-submodule`   # Run en the main directory
 
 You should be able to flash the firmware now. If you find any issue, check QMK
 website because it can change from time to time. Please follow all steps,
-because all of them are necessary.
+because all of them are necessary. Also for pimoroni/cirque docs see:
+./docs/feature_pointing_device.md
 
 -----------------------------------------------------------------------------
 ### HOW TO FLASH
