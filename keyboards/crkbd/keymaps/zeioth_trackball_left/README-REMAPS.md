@@ -3,34 +3,34 @@
 ## Keymap
 These are the recommended keybindingss for workman.
 
-### VIM (NORMAL MODE+VISUAL) 
+### VIM (NORMAL MODE+VISUAL)
 ```c
 //         |   |   |   |               |   |   |  |
-   WIN     q   d   r   w   t       y   f   u   p  ñ     AGR
-   CTL     a   s   b   e   g       h   j   k   l  i     ´`      
-   SHIF    z   x   m   c   v       k   o   ,   .  ?¿    SHIF
+   WIN     q   m   f   p   w       s   l   u   y  ñ     AGR
+   CTL     a   r   b   e   g       h   j   k   l  i     ´`
+   SHIF    z   x   c   d   v       n   t   ,   .  ?¿    SHIF
 
                   SUP LOW ENT      SPA RAI ALT
 //                     |                |
 ```
 
-### VIMIUMC 
+### VIMIUMC
 ```c
 //         |   |   |   |               |   |   |  |
-   WIN           open fav                  PU  PD       AGR
-   CTL                             h   j   k   l        ´`      
+   WIN        fav  H  open        yank   link PD PU     AGR
+   CTL                             h   j   k   l        ´`
    SHIF                                                 SHIF
 
                   SUP LOW ENT      SPA RAI ALT
 //                     |                |
 ```
 
-### RANGER 
+### RANGER
 ```c
 //         |   |   |   |               |   |   |  |
-   WIN     q   d   r   w   b       y   f   u   p  ñ     AGR
-   CTL     a   s   e   t   g       h   j   k   l  i     ´`      
-   SHIF    z   x   m   c   v       k   o   ,   .  ?¿    SHIF
+   WIN     q   m   f   p   b       j   l   u   y  ñ     AGR
+   CTL     a   r   s   t   g       h   j   k   l  o     ´`
+   SHIF    z   x   c   d   v       k   h   ,   .  ?¿    SHIF
 
                   SUP LOW           BSP RAI DEL
 //                     |                |
