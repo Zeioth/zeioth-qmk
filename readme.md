@@ -9,7 +9,7 @@ Includes a bunch of macro examples that I use to increase my productivity
 in Sway/VIM particulary. It can be extended with extra layers and modes.
 
 * base maps
-  * [base](#base-colemak-dh-for-spanish)
+  * [base](#base-colemak-dhv-for-spanish)
   * [lower](#lower)
   * [lower (shifted)](#lower-shifted)
 * advanced functions
@@ -33,12 +33,12 @@ in Sway/VIM particulary. It can be extended with extra layers and modes.
 -----------------------------------------------------------------------------
 
 
-### BASE (colemak-dh for spanish)
+### BASE (colemak-dhv for spanish)
 ```c
 //         |   |   |   |               |   |   |  |
-   BCSP    q   w   f   p   b       j   l   u   y  ñ     BSPC
+   BCSP    q   w   c   p   b       j   l   u   y  ñ     BSPC
    CTL     a   r   s   t   g       y   n   e   o  i     ´`
-   SHIF    z   x   c   d   v       k   h   ,   .  ?¿    SHIF
+   SHIF    z   x   f   d   k       v   h   ,   .  ?¿    SHIF
 
                   SUP LOW ENT      SPA RAI ALT
 //                     |                |
@@ -205,7 +205,7 @@ in Sway/VIM particulary. It can be extended with extra layers and modes.
 ### HOW TO USE
 -----------------------------------------------------------------------------
 ## layers
-* base: Colemak-dh standar keys.
+* base: (Colemak-dhv)[https://www.reddit.com/r/Colemak/comments/pz2tib/comment/hey7mik/?utm_source=reddit&utm_medium=web2x&context=3] standar keys. See: (this)[https://www.youtube.com/watch?v=zSoUPNo0WVs]
 * super: System macros. By default optimized for Manjaro I3.
 * lower: Symbols.
 * raise: Reserved for specific programs (vim, when on vim mode, etc)
