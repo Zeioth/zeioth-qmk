@@ -78,6 +78,7 @@ enum custom_keycodes {
   M_HELP,
   M_VIM_HELP,
   I3_FS,
+  I3_CLIPBOARD,
   I3_DISPLAYS,
   I3_SCREENSHOT,
   I3_RESIZE,
@@ -114,21 +115,21 @@ enum custom_keycodes {
   CKC_O_BRK,
   CKC_C_BRK,
   // RAISE LAYER KEYCODES
-  VIM_CIT,
-  VIM_CIP,
-  VIM_CIS,
-  VIM_CIW,
-  VIM_CIB,
-  VIM_VIT,
-  VIM_VIP,
-  VIM_VIS,
-  VIM_VIW,
-  VIM_VIB,
-  VIM_DIT,
-  VIM_DIP,
-  VIM_DIS,
-  VIM_DIW,
-  VIM_DIB,
+  VIM_COT,
+  VIM_COP,
+  VIM_COS,
+  VIM_COW,
+  VIM_COB,
+  VIM_VOT,
+  VIM_VOP,
+  VIM_VOS,
+  VIM_VOW,
+  VIM_VOB,
+  VIM_DOT,
+  VIM_DOP,
+  VIM_DOS,
+  VIM_DOW,
+  VIM_DOB,
   VIM_GTU,
   VIM_GTD,
   VIM_GMD,
@@ -175,7 +176,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+-------------------+----------------+--------------+---------|                    |-------+----------------+--------------+-----------------+--------+---------|
       KC_LCTL,   M_WS7,              M_WS1,           M_WS2,         M_WS3,    I3_FS,                   I3_WINTAB,           M_WS4,         M_WS5,           M_WS6,     M_WS8,   KC_NO,\
   //|--------+--------+-------------------+----------------+--------------+---------|                    |-------+----------------+--------------+--------------------------+---------|
-      KC_LSFT, I3_DISPLAYS,          I3_RESIZE,         I3_MOVE, I3_SPAD,      KC_NO,                    I3_FLOAT,           I3_PW,         I3_NW,     I3_SCREENSHOT, I3_RESET, CKC_RSFT,\
+      KC_LSFT, I3_DISPLAYS,          I3_RESIZE,         I3_MOVE, I3_SPAD, I3_CLIPBOARD,                    I3_FLOAT,         I3_PW,         I3_NW,     I3_SCREENSHOT, I3_RESET, CKC_RSFT,\
   //|--------+--------+-------------------+----------------+--------------+-----------------|  |---------+-------+----------------+--------------+------------------+--------+---------|
                                                                      SUPER,    LOWER, ADJUST,  KC_NO, RAISE, KC_DEL \
                                                                     //`---------------------'  `------------------------'
@@ -197,11 +198,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ############################################################# RAISE ########################################################################
   [_RAISE] = LAYOUT_split_3x6_3( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      KC_LGUI, VIM_DIT,   VIM_DIP, VIM_DIS, VIM_DIW, VIM_DIB,                      KC_HOME, KC_END, KC_PGDOWN, KC_PGUP, XXXXXXX, KC_NO,\
+      KC_LGUI, VIM_DOT,   VIM_DOP, VIM_DOS, VIM_DOW, VIM_DOB,                      KC_HOME, KC_END, KC_PGDOWN, KC_PGUP, XXXXXXX, KC_NO,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL, VIM_CIT,   VIM_CIP, VIM_CIS, VIM_CIW, VIM_CIB,                      KC_LEFT, KC_DOWN,  KC_UP, KC_RIGHT, KC_ASTG, KC_NO,\
+      KC_LCTL, VIM_COT,   VIM_COP, VIM_COS, VIM_COW, VIM_COB,                      KC_LEFT, KC_DOWN,  KC_UP, KC_RIGHT, KC_ASTG, KC_NO,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT, VIM_VIT,   VIM_VIP, VIM_VIS, VIM_VIW, VIM_VIB,                     XXXXXXX, VIM_GMD,  VIM_GMU, VIM_GTD, VIM_GTU, CKC_RSFT,\
+      KC_LSFT, VIM_VOT,   VIM_VOP, VIM_VOS, VIM_VOW, VIM_VOB,                     XXXXXXX, VIM_GMD,  VIM_GMU, VIM_GTD, VIM_GTU, CKC_RSFT,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                            SUPER, LOWER, CKC_CTRLBS,  CKC_CTRLBS,   RAISE, KC_NO \
                                       //`--------------------------'  `--------------------------'
@@ -210,9 +211,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ############################################################# HYPER ########################################################################
   [_HYPER] = LAYOUT_split_3x6_3( \
   //,--------------------------------------------------------------------------------.                    ,--------------------------------------------------------------.
-    M_WEATHER,      M_CBACKUP, M_UPDATE_PACKAGES,   M_ROFI_SHORTCUTS, M_ROFI_EMOJI, M_FILEX,                   M_RANGER, KC_MS_BTN2,    KC_MS_U, KC_MS_BTN3,   M_VIM, M_ROFI_MANUALS,\
+    M_WEATHER,      M_CBACKUP, M_UPDATE_PACKAGES,   M_ROFI_DOCS, M_ROFI_EMOJI, M_FILEX,                   M_RANGER, KC_MS_BTN2,    KC_MS_U, KC_MS_BTN3,   M_VIM, M_ROFI_MANUALS,\
   //|--------+---------------+------------+-------------------+-------------+--------|                    |--------+-----------+-----------+-----------+--------+--------|
-      KC_LCTL,         KC_F11, M_ROFI_DOCS,  M_ROFI_ACTIVITIES,      M_ROFI,    M_CALC,                   KC_MS_BTN1,    KC_MS_L,    KC_MS_D,    KC_MS_R,  KC_F12, KC_ACL1,\
+      KC_LCTL,         KC_F11, M_ROFI_SHORTCUTS,  M_ROFI_ACTIVITIES,      M_ROFI,    M_CALC,                   KC_MS_BTN1,    KC_MS_L,    KC_MS_D,    KC_MS_R,  KC_F12, KC_ACL1,\
   //|--------+---------------+------------+-------------------+-------------+--------|                    |--------+-----------+-----------+-----------+--------+--------|
     KC_LSHIFT,          KC_F4,       KC_F3,              KC_F2,        KC_F1,   KC_F5,                      KC_F10,       KC_F6,      KC_F7,      KC_F8,   KC_F9, CKC_RSFT,\
   //|--------+---------------+------------+-------------------+-------------+--------+--------|  |--------+--------+-----------+-----------+-----------+--------+--------|
@@ -495,6 +496,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case I3_FS:
       if (record->event.pressed) {trigger_shortcut(KC_F,0,0,1,0,0);}
       return false;
+    case I3_CLIPBOARD:
+      if (record->event.pressed) {trigger_shortcut(KC_F4,0,0,1,0,0);}
+      return false;
     case I3_DISPLAYS: 
       if (record->event.pressed) {trigger_shortcut(KC_D,1,0,1,0,0);}
       return false;
@@ -630,123 +634,123 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     // RAISE LAYER HERE
     // ----------------------------------------------------------------------
-    case VIM_CIT: // change inner tag 
+    case VIM_COT: // change inner tag 
       if (record->event.pressed) {
         press_virtual_key(KC_C, KC_C, 0, 0, 0, 0);
-        press_virtual_key(KC_I, KC_A, 0, 0, 0, 0);
+        press_virtual_key(KC_O, KC_A, 0, 0, 0, 0);
         press_virtual_key(KC_T, KC_T, 0, 0, 0, 0);
       }
       else {clear_keyboard_but_mods();}
       return false;
-    case VIM_CIP: // change inner paragraph
+    case VIM_COP: // change inner paragraph
       if (record->event.pressed) {
         press_virtual_key(KC_C, KC_C, 0, 0, 0, 0);
-        press_virtual_key(KC_I, KC_A, 0, 0, 0, 0);
+        press_virtual_key(KC_O, KC_A, 0, 0, 0, 0);
         press_virtual_key(KC_P, KC_P, 0, 0, 0, 0);
       }
       else {clear_keyboard_but_mods();}
       return false;
-    case VIM_CIS: // change inner sentence
+    case VIM_COS: // change inner sentence
       if (record->event.pressed) {
         press_virtual_key(KC_C, KC_C, 0, 0, 0, 0);
-        press_virtual_key(KC_I, KC_A, 0, 0, 0, 0);
+        press_virtual_key(KC_O, KC_A, 0, 0, 0, 0);
         press_virtual_key(KC_S, KC_S, 0, 0, 0, 0);
       }
       else {clear_keyboard_but_mods();}
       return false;
-    case VIM_CIW: // change inner word
+    case VIM_COW: // change inner word
       if (record->event.pressed) {
         press_virtual_key(KC_C, KC_C, 0, 0, 0, 0);
-        press_virtual_key(KC_I, KC_A, 0, 0, 0, 0);
+        press_virtual_key(KC_O, KC_A, 0, 0, 0, 0);
         press_virtual_key(KC_W, KC_W, 0, 0, 0, 0);
       }
       else {clear_keyboard_but_mods();}
       return false;
-    case VIM_CIB: // chnge inner block of code {}
+    case VIM_COB: // chnge inner block of code {}
       if (record->event.pressed) {
         press_virtual_key(KC_C, KC_C, 0, 0, 0, 0);
-        press_virtual_key(KC_I, KC_I, 0, 0, 0, 0);
+        press_virtual_key(KC_O, KC_I, 0, 0, 0, 0);
         press_virtual_key(KC_B, KC_B, 1, 0, 0, 0);
       }
       else {clear_keyboard_but_mods();}
       return false;
-    case VIM_VIT: // visual inner tag (selection)
+    case VIM_VOT: // visual inner tag (selection)
       if (record->event.pressed) {
         press_virtual_key(KC_V, KC_V, 0, 0, 0, 0);
-        press_virtual_key(KC_I, KC_A, 0, 0, 0, 0);
+        press_virtual_key(KC_O, KC_A, 0, 0, 0, 0);
         press_virtual_key(KC_T, KC_T, 0, 0, 0, 0);
       }
       else {clear_keyboard_but_mods();}
       return false;
-    case VIM_VIP: // visual inner paragraph (selection)
+    case VIM_VOP: // visual inner paragraph (selection)
       if (record->event.pressed) {
         press_virtual_key(KC_V, KC_V, 0, 0, 0, 0);
-        press_virtual_key(KC_I, KC_A, 0, 0, 0, 0);
+        press_virtual_key(KC_O, KC_A, 0, 0, 0, 0);
         press_virtual_key(KC_P, KC_P, 0, 0, 0, 0);
       }
       else {clear_keyboard_but_mods();}
       return false;
-    case VIM_VIS: // visual inner sentence (selection)
+    case VIM_VOS: // visual inner sentence (selection)
       if (record->event.pressed) {
         press_virtual_key(KC_V, KC_V, 0, 0, 0, 0);
-        press_virtual_key(KC_I, KC_A, 0, 0, 0, 0);
+        press_virtual_key(KC_O, KC_A, 0, 0, 0, 0);
         press_virtual_key(KC_S, KC_S, 0, 0, 0, 0);
       }
       else {clear_keyboard_but_mods();}
       return false;
-    case VIM_VIW: // visual inner word (selection)
+    case VIM_VOW: // visual inner word (selection)
       if (record->event.pressed) {
         press_virtual_key(KC_V, KC_V, 0, 0, 0, 0);
-        press_virtual_key(KC_I, KC_A, 0, 0, 0, 0);
+        press_virtual_key(KC_O, KC_A, 0, 0, 0, 0);
         press_virtual_key(KC_W, KC_W, 0, 0, 0, 0);
       }
       else {clear_keyboard_but_mods();}
       return false;
 
-    case VIM_VIB: // visual inner block of code {}
+    case VIM_VOB: // visual inner block of code {}
       if (record->event.pressed) {
         press_virtual_key(KC_V, KC_V, 0, 0, 0, 0);
-        press_virtual_key(KC_I, KC_I, 0, 0, 0, 0);
+        press_virtual_key(KC_O, KC_I, 0, 0, 0, 0);
         press_virtual_key(KC_B, KC_B, 1, 0, 0, 0);
       }
       else {clear_keyboard_but_mods();}
       return false;
-    case VIM_DIT: // delete inner tag 
+    case VIM_DOT: // delete inner tag 
       if (record->event.pressed) {
         press_virtual_key(KC_D, KC_D, 0, 0, 0, 0);
-        press_virtual_key(KC_I, KC_A, 0, 0, 0, 0);
+        press_virtual_key(KC_O, KC_A, 0, 0, 0, 0);
         press_virtual_key(KC_T, KC_T, 0, 0, 0, 0);
       }
       else {clear_keyboard_but_mods();}
       return false;
-    case VIM_DIP: // delete inner paragraph
+    case VIM_DOP: // delete inner paragraph
       if (record->event.pressed) {
         press_virtual_key(KC_D, KC_D, 0, 0, 0, 0);
-        press_virtual_key(KC_I, KC_A, 0, 0, 0, 0);
+        press_virtual_key(KC_O, KC_A, 0, 0, 0, 0);
         press_virtual_key(KC_P, KC_P, 0, 0, 0, 0);
       }
       else {clear_keyboard_but_mods();}
       return false;
-    case VIM_DIS: // delete inner sentence
+    case VIM_DOS: // delete inner sentence
       if (record->event.pressed) {
         press_virtual_key(KC_D, KC_D, 0, 0, 0, 0);
-        press_virtual_key(KC_I, KC_A, 0, 0, 0, 0);
+        press_virtual_key(KC_O, KC_A, 0, 0, 0, 0);
         press_virtual_key(KC_S, KC_S, 0, 0, 0, 0);
       }
       else {clear_keyboard_but_mods();}
       return false;
-    case VIM_DIW: // delete inner word
+    case VIM_DOW: // delete inner word
       if (record->event.pressed) {
         press_virtual_key(KC_D, KC_D, 0, 0, 0, 0);
-        press_virtual_key(KC_I, KC_A, 0, 0, 0, 0);
+        press_virtual_key(KC_O, KC_A, 0, 0, 0, 0);
         press_virtual_key(KC_W, KC_W, 0, 0, 0, 0);
       }
       else {clear_keyboard_but_mods();}
       return false;
-    case VIM_DIB: // delete inner block of code {}
+    case VIM_DOB: // delete inner block of code {}
       if (record->event.pressed) {
         press_virtual_key(KC_D, KC_D, 0, 0, 0, 0);
-        press_virtual_key(KC_I, KC_I, 0, 0, 0, 0);
+        press_virtual_key(KC_O, KC_I, 0, 0, 0, 0);
         press_virtual_key(KC_B, KC_B, 1, 0, 0, 0);
       }
       else {clear_keyboard_but_mods();}
