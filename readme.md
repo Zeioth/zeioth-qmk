@@ -105,9 +105,9 @@ in Sway/VIM particulary. It can be extended with extra layers and modes.
 // [ COL, PAG, (i)SELECTION, MOV]
 // [ GOTO CLASS, GOTO METHOD]
 //         |   |   |   |                 |   |   |   |
-   WIN    co  cop cos cow coB        HOM END PD  PU  |   AGR
-   CTL    vot vop vos vow voB         l   d   u   r AS*
-   SHIF   dot dop dos dow doB           gmd gmu gtd gtu  SHIF
+   WIN    ci  cip cis ciw ciB        HOM END PD  PU  |   AGR
+   CTL    vit vip vis viw viB         l   d   u   r AS*
+   SHIF   dit dip dis diw diB           gmd gmu gtd gtu  SHIF
 
                   SUP LOW              RAI ALT
 //                     |                |
@@ -118,9 +118,9 @@ in Sway/VIM particulary. It can be extended with extra layers and modes.
 ```c
 // [(a) SELECTION]
 //         |   |   |   |               |   |   |   |
-   WIN    dot dop dos dop dob
-   CTL    cot cop cos cow cob
-   SHIF   vot vop vos vow vob         gmd gmu gtd gtu
+   WIN    dit dip dis dip dib
+   CTL    cit cip cis ciw cib
+   SHIF   vit vip vis viw vib         gmd gmu gtd gtu
 
                   SUP LOW              RAI ALT
 //                     |                |
