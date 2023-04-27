@@ -81,7 +81,7 @@ in Sway/VIM particulary. It can be extended with extra layers and modes.
 //         |   |   |   |                   |   |   |  |
    WIN     lok vd vu   m             gkl   p   <   >  pwd   AGR
    CTL      7   1   2   3    FS      wtab  6   5   4  8
-   SHIF    gap res move scp lym      flo   wp  wn FW  ri3   SHIF
+   SHIF    dis res move scp lym      flo   |  |  sho  rst   SHIF
 
                   SUP LOW          BSP RAI DEL
 //                     |                |
@@ -105,9 +105,9 @@ in Sway/VIM particulary. It can be extended with extra layers and modes.
 // [ COL, PAG, (i)SELECTION, MOV]
 // [ GOTO CLASS, GOTO METHOD]
 //         |   |   |   |                 |   |   |   |
-   WIN    ci  cip cis ciw ciB        HOM END PD  PU  |   AGR
-   CTL    vit vip vis viw viB         l   d   u   r AS*
-   SHIF   dit dip dis diw diB           gmd gmu gtd gtu  SHIF
+   WIN    co  cop cos cow coB        HOM END PD  PU  |   AGR
+   CTL    vot vop vos vow voB         l   d   u   r AS*
+   SHIF   dot dop dos dow doB           gmd gmu gtd gtu  SHIF
 
                   SUP LOW              RAI ALT
 //                     |                |
@@ -118,9 +118,9 @@ in Sway/VIM particulary. It can be extended with extra layers and modes.
 ```c
 // [(a) SELECTION]
 //         |   |   |   |               |   |   |   |
-   WIN    dat dap das dip dib
-   CTL    cat cap cas caw cib
-   SHIF   vat vap vas vaw vib         gmd gmu gtd gtu
+   WIN    dot dop dos dop dob
+   CTL    cot cop cos cow cob
+   SHIF   vot vop vos vow vob         gmd gmu gtd gtu
 
                   SUP LOW              RAI ALT
 //                     |                |
@@ -132,9 +132,9 @@ in Sway/VIM particulary. It can be extended with extra layers and modes.
 // [POWER]
 // [MOVE WORKSPACE]
 //         |   |   |   |                |   |   |   |
-   wea    bk  tb  sc  emo ex       rng  lc  mu  rc  vim   man
-   CTL    F11 doc act rof           mc  ml  md  mr  F1e   SP0
-   SHIF   F4  F3  F2  F1 F5        F10  F6  F7  F8  F9    SHIF
+   wea    bk  up  sc  emo gfm      rng  lc  mu  rc  vim   man
+   CTL    F11 gpt foo wof           mc  ml  md  mr  F1e   SP0
+   SHIF   F4  F3  F2  F1  F5       F10  F6  F7  F8  F9    SHIF
 
                   SUP LOW          SP2 SP1 ALT
 //                     |                |
@@ -222,7 +222,7 @@ macros there.
 -----------------------------------------------------------------------------
 
 * `sudo pacman -S qmk`
-* `sudo downgrade -S avr-gcc` # here choose version 8.x
+* `sudo downgrade avr-gcc` # here choose version 8.x
 * `sudo make git-submodule`   # Run en the main directory
 
 You should be able to flash the firmware now. If you find any issue, check QMK
