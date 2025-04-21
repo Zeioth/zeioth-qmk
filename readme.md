@@ -223,7 +223,7 @@ macros there.
 
 * `sudo pacman -S qmk`
 * `sudo downgrade avr-gcc` # here choose version 8.x
-* `sudo make git-submodule`   # Run en the main directory
+* `sudo make git-submodule`   # Run in the main directory
 
 You should be able to flash the firmware now. If you find any issue, check QMK
 website because it can change from time to time. Please follow all steps,
